@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
     json: true
   }).then(body => {
     if (!body.error) {
-      res.redirect('http://localhost:4200/?access_token=' + body.access_token);
+      res.redirect(req.query.redirect_uri + '?access_token=' + body.access_token);
     } else {
       next(body.error);
     }
